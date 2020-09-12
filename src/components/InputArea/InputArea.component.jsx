@@ -8,12 +8,14 @@ import Button from '../Button/Button.component';
 import './InputArea.styles.scss';
 
 const InputArea = (props) => {
+    // const initialDate = new Date();
+
     const [input, setInput] = 
     useState({
       dueDate: "",
       name: "",
       priority: "",
-      id: ""
+      id: "",
     });
 
     const onChangeHandler = (event) => {
@@ -35,6 +37,10 @@ const InputArea = (props) => {
         console.log(input);
     }, [input])
 
+    // useEffect(() => {
+    //     const date = new Date().now;
+    //     setInput({ ...input, dueDate: date });
+    // }, []);
 
     return (
       <div className="inputArea">

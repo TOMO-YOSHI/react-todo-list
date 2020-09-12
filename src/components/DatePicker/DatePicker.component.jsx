@@ -23,20 +23,20 @@ const useStyles = makeStyles(() =>
 export default function MaterialUIPickers(props) {
   // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState(
-    new Date().now
+    new Date()
   );
 
   const setId = props.setId;
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    props.change("dueDate", date);
+    // setId();
   };
 
-    useEffect(() => {
-      setId();
-    }, [selectedDate]);
-
+  useEffect(() => {
+    //   setId();
+    props.change("dueDate", selectedDate);
+  }, [selectedDate]);
 
   const classes = useStyles()
 

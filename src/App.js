@@ -10,19 +10,24 @@ class App extends React.Component {
     todoList: [
       // {
       //   dueDate: "",
-      //   name: "",
+      //   name: "test",
       //   priority: "",
       // },
     ],
   };
 
   addTodo = (todo) => {
-    let todoList = this.state.todoList;
-    todoList.push(todo);
-    this.setState({ todoList: todoList });
+    if ( !todo.name || !todo.dueDate || !todo.priority) {
+      alert("Please fill in all fields!!");
+    } else {
+      let todoList = this.state.todoList;
+      todoList.push(todo);
+      this.setState({ todoList: todoList });
+    }
   }
 
   componentDidUpdate() {
+    console.log('state update')
     console.log(...this.state.todoList)
   }
 

@@ -5,19 +5,19 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 const priorities = [
   {
-    value: "1",
+    value: 1,
     label: "A",
   },
   {
-    value: "2",
+    value: 2,
     label: "B",
   },
   {
-    value: "3",
+    value: 3,
     label: "C",
   },
   {
-    value: "4",
+    value: 4,
     label: "D",
   },
 ];
