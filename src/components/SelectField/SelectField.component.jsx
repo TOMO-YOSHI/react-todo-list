@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
-const currencies = [
+const priorities = [
   {
     value: "1",
     label: "A",
@@ -32,18 +32,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MultilineTextFields() {
+export default function MultilineTextFields(props) {
   const classes = useStyles();
-  const [priority, setPriority] = React.useState("A");
+  const [priority, setPriority] = React.useState("");
 
   const handleChange = (event) => {
     setPriority(event.target.value);
+    props.change(event);
   };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
         <TextField
+          name="priority"
           id="standard-select-priority"
           select
           label="Priority"
@@ -51,7 +53,7 @@ export default function MultilineTextFields() {
           onChange={handleChange}
         //   helperText="Please select your currency"
         >
-          {currencies.map((option) => (
+          {priorities.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>

@@ -1,6 +1,6 @@
 import "date-fns";
-import React from "react";
-import Grid from "@material-ui/core/Grid";
+import React,{ useEffect } from "react";
+// import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
@@ -20,34 +20,42 @@ const useStyles = makeStyles(() =>
 );
 
 
-export default function MaterialUIPickers() {
+export default function MaterialUIPickers(props) {
   // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState(
     new Date().now
   );
 
+  const setId = props.setId;
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    props.change("dueDate", date);
   };
+
+    useEffect(() => {
+      setId();
+    }, [selectedDate]);
+
 
   const classes = useStyles()
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          className={classes.input}
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="When is the due date?"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            "aria-label": "change date",
-          }}
-        />
+      <KeyboardDatePicker
+        className={classes.input}
+        disableToolbar
+        variant="inline"
+        format="MM/dd/yyyy"
+        margin="normal"
+        id="date-picker-inline"
+        label="When is the due date?"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+          "aria-label": "change date",
+        }}
+      />
     </MuiPickersUtilsProvider>
   );
 }

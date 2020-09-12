@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function IconLabelButtons() {
+export default function IconLabelButtons(props) {
   const classes = useStyles();
 
   return (
@@ -23,6 +23,7 @@ export default function IconLabelButtons() {
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
+        onClick={() => props.click(props.input)}
       >
         Save
       </Button>

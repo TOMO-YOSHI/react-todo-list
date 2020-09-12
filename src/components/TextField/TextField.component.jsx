@@ -11,12 +11,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BasicTextFields() {
+export default function BasicTextFields(props) {
   const classes = useStyles();
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="standard-basic" label="What will you do?" />
+      <TextField name="name" id="standard-basic" label="What will you do?" onChange={props.change} />
     </form>
   );
 }
