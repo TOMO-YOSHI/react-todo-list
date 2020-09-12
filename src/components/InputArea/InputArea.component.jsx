@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+import DatePicker from '../DatePicker/DatePicker.component';
+import TextField from '../TextField/TextField.component';
+import SelectField from '../SelectField/SelectField.component';
+import Button from '../Button/Button.component';
+
 import './InputArea.styles.scss';
 
 const InputArea = () => {
@@ -12,10 +17,10 @@ const InputArea = () => {
 
     return (
         <div className="inputArea">
-            <input type="text" placeholder="When?" /><br/>
-            <input type="text" placeholder="What?" /><br/>
-            <input type="text" placeholder="How important?" /><br/>
-            <button>ADD ToDo</button>
+            <DatePicker />
+            <TextField />
+            <SelectField />
+            <Button />
         </div>
     )
 }
