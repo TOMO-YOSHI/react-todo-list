@@ -19,12 +19,14 @@ const Header = (props) => {
     return (
       <div className="header">
         <h1>Your ToDo Manager</h1>
-        <TransitionsModal 
-            addTodo={props.addTodo} 
-            modalOpen={props.modalOpen} 
-            handleOpen={props.handleOpen}
-            handleClose={props.handleClose}/>
       </div>
     );}
 
 export default Header;
+
+        // <TransitionsModal
+        //   addTodo={props.addTodo}
+        //   modalOpen={props.modalOpen}
+        //   handleOpen={props.handleOpen}
+        //   handleClose={props.handleClose}
+        // />;

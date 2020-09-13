@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 
 import Header from './components/Header/Header.component';
-import InputArea from './components/InputArea/InputArea.component';
 import OutputArea from './components/OutputArea/OutputArea.component';
+import TransitionsModal from "./components/Modal/Modal.component.jsx";
 
 class App extends React.Component {
   state = {
@@ -52,14 +52,21 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header 
-          addTodo={this.addTodo} 
-          modalOpen={this.state.modalOpen} 
-          handleOpen={this.handleOpen}
-          handleClose={this.handleClose} />
+        <Header
+          // addTodo={this.addTodo}
+          // modalOpen={this.state.modalOpen}
+          // handleOpen={this.handleOpen}
+          // handleClose={this.handleClose}
+        />
         <OutputArea
           todoList={this.state.todoList}
           deleteTodo={this.deleteTodo}
+        />
+        <TransitionsModal
+          addTodo={this.addTodo}
+          modalOpen={this.state.modalOpen}
+          handleOpen={this.handleOpen}
+          handleClose={this.handleClose}
         />
       </div>
     );

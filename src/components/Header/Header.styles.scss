@@ -1,17 +1,17 @@
 .header {
     background-color: skyblue;
     padding: 1rem 0;
-    position: relative;
+    // position: relative;
 
     h1 {
         color: white;
         margin: 0;
     }
 
-    button {
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-    }
+    // button {
+    //     position: absolute;
+    //     top: 50%;
+    //     right: 10px;
+    //     transform: translateY(-50%);
+    // }
 }

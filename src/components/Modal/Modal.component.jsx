@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: "2px solid skyblue",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -30,20 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TransitionsModal(props) {
   const classes = useStyles();
-//   const [open, setOpen] = React.useState(false);
-
-//   const handleOpen = () => {
-//     setOpen(true);
-//   };
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-    const open = props.modalOpen;
-    console.log(props.modalOpen);
+  const open = props.modalOpen;
 
   return (
-    <div>
+    <div className="modalButton">
       <IconButton aria-label="delete" onClick={props.handleOpen}>
         <AddIcon />
       </IconButton>
