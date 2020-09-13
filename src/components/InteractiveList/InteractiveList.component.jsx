@@ -9,7 +9,6 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import EditIcon from "@material-ui/icons/Edit";
-import FolderIcon from "@material-ui/icons/Folder";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import './InteractiveList.styles.scss';
@@ -35,31 +34,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// function generate(element) {
-//   return [0, 1, 2].map((value) =>
-//     React.cloneElement(element, {
-//       key: value,
-//     })
-//   );
-// }
-
 export default function InteractiveList(props) {
   const classes = useStyles();
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
 
   const todoList = [...props.todoList];
-
-//   useEffect(() => {
-//     console.log(todoList[0]['name']);
-//   }, [todoList]);
+//   const deleteTodo = props.deleteTodo;
 
   return (
     <Grid className={classes.div} item xs={12} md={6}>
       <div className={classes.demo}>
       {
           todoList.length ?
-            todoList.map(todo => {
+            todoList.map((todo, index) => {
                 const date =
                   todo.dueDate.getDate() < 10
                     ? "0" + todo.dueDate.getDate()
@@ -93,17 +81,16 @@ export default function InteractiveList(props) {
                 return (
                   <List dense={dense} key={todo.id}>
                     <ListItem>
-                      <ListItemAvatar>
-                        <Avatar>
-                          <EditIcon />
-                        </Avatar>
-                      </ListItemAvatar>
                       <ListItemText
                         primary={`${month}/${date}/${year} - ${todo.name} - ${priority}`}
                         secondary={secondary ? "Secondary text" : null}
                       />
                       <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete">
+                        <IconButton
+                          edge="end"
+                          aria-label="delete"
+                          onClick={() => props.deleteTodo(index)}
+                        >
                           <DeleteIcon />
                         </IconButton>
                       </ListItemSecondaryAction>

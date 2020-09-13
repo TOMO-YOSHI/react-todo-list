@@ -7,7 +7,7 @@ import './OutputArea.styles.scss';
 const OutputArea = (props) => {
   return (
     <div className="outputArea">
-        <InteractiveList todoList={props.todoList} />
+        <InteractiveList todoList={props.todoList} deleteTodo={props.deleteTodo}/>
     </div>
   );
 };

@@ -17,13 +17,21 @@ class App extends React.Component {
   };
 
   addTodo = (todo) => {
+    let todoInput = { ...todo, id: new Date().getTime() };
+
     if ( !todo.name || !todo.dueDate || !todo.priority) {
       alert("Please fill in all fields!!");
     } else {
       let todoList = this.state.todoList;
-      todoList.push(todo);
+      todoList.push(todoInput);
       this.setState({ todoList: todoList });
     }
+  }
+
+  deleteTodo = (index) => {
+      let todoList = this.state.todoList;
+      todoList.splice(index, 1);
+      this.setState({ todoList: todoList });
   }
 
   componentDidUpdate() {
@@ -36,7 +44,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <InputArea addTodo={this.addTodo} />
-        <OutputArea todoList={this.state.todoList} />
+        <OutputArea todoList={this.state.todoList} deleteTodo={this.deleteTodo} />
       </div>
     );
   }
