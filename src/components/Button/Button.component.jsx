@@ -23,7 +23,9 @@ export default function IconLabelButtons(props) {
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
-        onClick={() => props.click(props.input)}
+        onClick={() => {
+            props.click(props.input)
+        }}
       >
         Save
       </Button>

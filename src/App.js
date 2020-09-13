@@ -14,40 +14,59 @@ class App extends React.Component {
       //   priority: "",
       // },
     ],
+    modalOpen: false,
   };
 
   addTodo = (todo) => {
     let todoInput = { ...todo, id: new Date().getTime() };
 
-    if ( !todo.name || !todo.dueDate || !todo.priority) {
+    if (!todo.name || !todo.dueDate || !todo.priority) {
       alert("Please fill in all fields!!");
     } else {
       let todoList = this.state.todoList;
       todoList.push(todoInput);
       this.setState({ todoList: todoList });
+      this.handleClose();
     }
-  }
+  };
 
   deleteTodo = (index) => {
-      let todoList = this.state.todoList;
-      todoList.splice(index, 1);
-      this.setState({ todoList: todoList });
-  }
+    let todoList = this.state.todoList;
+    todoList.splice(index, 1);
+    this.setState({ todoList: todoList });
+  };
+
+  handleOpen = () => {
+    this.setState({modalOpen:true});
+  };
+
+  handleClose = () => {
+    this.setState({ modalOpen: false });
+  };
 
   componentDidUpdate() {
-    console.log('state update')
-    console.log(...this.state.todoList)
+    console.log("state update");
+    console.log(...this.state.todoList);
   }
 
   render() {
     return (
       <div className="App">
-        <Header />
-        <InputArea addTodo={this.addTodo} />
-        <OutputArea todoList={this.state.todoList} deleteTodo={this.deleteTodo} />
+        <Header 
+          addTodo={this.addTodo} 
+          modalOpen={this.state.modalOpen} 
+          handleOpen={this.handleOpen}
+          handleClose={this.handleClose} />
+        <OutputArea
+          todoList={this.state.todoList}
+          deleteTodo={this.deleteTodo}
+        />
       </div>
     );
   }
 }
 
 export default App;
+
+        // <InputArea addTodo={this.addTodo} />;
+

@@ -1,13 +1,20 @@
 import React from 'react';
 
 import InteractiveList from '../InteractiveList/InteractiveList.component';
+import NoTodo from '../NoTodo/NoTodo．component';
 
 import './OutputArea.styles.scss';
 
 const OutputArea = (props) => {
   return (
     <div className="outputArea">
-        <InteractiveList todoList={props.todoList} deleteTodo={props.deleteTodo}/>
+        {
+            props.todoList.length > 0 ?
+             <InteractiveList todoList={props.todoList} deleteTodo={props.deleteTodo}/>
+             :
+             <NoTodo />
+        }
+       
     </div>
   );
 };
