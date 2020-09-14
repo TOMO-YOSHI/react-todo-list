@@ -10,20 +10,20 @@ class App extends React.Component {
     todoList: [
       {
         dueDate: new Date(),
-        name: "test",
+        name: "Sample data 1",
         priority: 1,
-        id: "testkey"
+        id: "testkey",
       },
       {
         dueDate: new Date(),
-        name: "aaa",
+        name: "Sample data 2",
         priority: 2,
-        id: "afraer"
+        id: "afraer",
       },
     ],
     modalOpen: false,
     editModalOpen: false,
-    editTodoId: ""
+    editTodoId: "",
   };
 
   addTodo = (todo) => {
@@ -44,18 +44,17 @@ class App extends React.Component {
       alert("Please fill in all fields!!");
     } else {
       let newTodoList = this.state.todoList;
-      let index = newTodoList.findIndex(
-        todo => todo.id == id);
-      
+      let index = newTodoList.findIndex((todo) => todo.id == id);
+
       console.log("index", index, id);
 
-      let newTodo = {...todo, id: id}
+      let newTodo = { ...todo, id: id };
 
       newTodoList[index] = newTodo;
       this.setState({ todoList: newTodoList });
       this.handleEditClose();
     }
-  }
+  };
 
   deleteTodo = (index) => {
     let todoList = this.state.todoList;

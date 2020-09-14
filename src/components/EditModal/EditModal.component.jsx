@@ -51,7 +51,7 @@ export default function EditModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Please Edit Your Duty</h2>
+            <h2 id="transition-modal-title">Edit Your Duty</h2>
             <div id="transition-modal-description">
               <EditArea
                 todoList={props.todoList}
