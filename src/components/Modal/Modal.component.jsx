@@ -33,7 +33,7 @@ export default function TransitionsModal(props) {
   const open = props.modalOpen;
 
   return (
-    <div className="modalButton">
+    <div className="modalButton-2">
       <IconButton aria-label="delete" onClick={props.handleOpen}>
         <AddIcon />
       </IconButton>
