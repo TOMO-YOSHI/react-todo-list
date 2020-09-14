@@ -26,12 +26,16 @@ export default function MaterialUIPickers(props) {
     new Date()
   );
 
-  const setId = props.setId;
-
   const handleDateChange = (date) => {
     setSelectedDate(date);
     // setId();
   };
+
+  // useEffect(()=>{
+  //   if (props.value) {
+  //   setSelectedDate(props.value);
+  //   }
+  // })
 
   useEffect(() => {
     //   setId();

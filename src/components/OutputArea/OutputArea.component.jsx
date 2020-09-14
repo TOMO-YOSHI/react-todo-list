@@ -12,6 +12,7 @@ const OutputArea = (props) => {
         <InteractiveList
           todoList={props.todoList}
           editTodo={props.editTodo}
+          editTodoId={props.editTodoId}
           deleteTodo={props.deleteTodo}
           editModalOpen={props.editModalOpen}
           handleEditOpen={props.handleEditOpen}

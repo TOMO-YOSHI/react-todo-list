@@ -16,7 +16,7 @@ export default function BasicTextFields(props) {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField name="name" id="standard-basic" label="What will you do?" onChange={props.change} />
+      <TextField name="name" id="standard-basic" label="What will you do?" onChange={props.change} value={props.value} />
     </form>
   );
 }

@@ -2,10 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import EditIcon from "@material-ui/icons/Edit";
@@ -89,15 +87,18 @@ export default function InteractiveList(props) {
                         break;
                 }
 
-                console.log(todo.id);
+                // console.log(todo.id);
 
                 return (
                   <List dense={dense} key={todo.id}>
                     <ListItem className={classes.listItem}>
                       <EditModal
-                        existTodo={todo}
+                        // existTodo={todo}
+                        todoId={todo.id}
+                        todoList={todoList}
                         editModalOpen={props.editModalOpen}
                         editTodo={props.editTodo}
+                        editTodoId={props.editTodoId}
                         handleEditOpen={props.handleEditOpen}
                         handleEditClose={props.handleEditClose}
                       />

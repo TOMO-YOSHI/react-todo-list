@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -40,6 +40,13 @@ export default function MultilineTextFields(props) {
     setPriority(event.target.value);
     props.change(event);
   };
+
+  useEffect(() => {
+    if (props.value) {
+      setPriority(props.value);
+    }
+  });
+
 
   return (
     <form className={classes.root} noValidate autoComplete="off">

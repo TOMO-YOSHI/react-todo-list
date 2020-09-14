@@ -33,7 +33,7 @@ export default function EditModal(props) {
   const open = props.editModalOpen;
 
   return (
-    <div className="test">
+    <div className="storeTodoId" data-todoid={props.todoId}>
       <IconButton aria-label="delete" onClick={props.handleEditOpen}>
         <EditIcon />
       </IconButton>
@@ -53,10 +53,11 @@ export default function EditModal(props) {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Please Edit Your Duty</h2>
             <div id="transition-modal-description">
-              <EditArea 
-                existTodo={props.existTodo}
-                editTodo={props.editTodo} 
-                todoId={props.todoId} />
+              <EditArea
+                editTodoId={props.editTodoId}
+                todoList={props.existTodo}
+                editTodo={props.editTodo}
+              />
             </div>
           </div>
         </Fade>

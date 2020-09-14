@@ -23,15 +23,15 @@ export default function IconLabelButtons(props) {
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
-        onClick={() => {
-            props.click(props.todo);
-            // props.todo.id
-            //   ? 
-            //   // props.click(props.todo, props.todoId)
-            //     console.log(props.todo.id)
-            //   : 
-            //     // console.log(props.todo)
-            //     props.click(props.todo);
+        onClick={(event) => {
+          props.click(props.todo);
+          // props.todo.id
+          //   ?
+          //   // props.click(props.todo, props.todoId)
+          //     console.log(props.todo.id)
+          //   :
+          //     // console.log(props.todo)
+          //     props.click(props.todo);
         }}
       >
         {props.text}

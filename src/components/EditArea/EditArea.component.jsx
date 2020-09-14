@@ -13,21 +13,22 @@ const EditArea = (props) => {
       dueDate: "",
       name: "",
       priority: "",
-      id: "",
+      // id: "",
     });
 
-    useEffect(()=>{
-      setEdit(props.existTodo);
-      console.log(props.existTodo);
-    }, [])
+    // useEffect(()=>{
+    //   setEdit(props.todoList);
+    //   console.log("editArea", props.todoList);
+    // }, [])
 
-    useEffect(()=>{
-      console.log("edit", edit);
-    }, [edit])
-
+    // useEffect(()=>{
+    //   console.log("edit", edit);
+    // }, [edit])
 
     const updateHandler = (edit) => {
-      props.editTodo(edit, edit.id);
+      // let todoId = event.target.closest("div").closest("storeTodoId");
+      // console.log(todoId);
+      props.editTodo(edit, props.editTodoId);
     }
 
     const onChangeHandler = (event) => {
@@ -40,10 +41,10 @@ const EditArea = (props) => {
         setEdit({ ...edit, [name]: value });
     }
 
-    const setId = () => {        
-        const id = new Date().getTime();
-        setEdit({ ...edit, id: id });
-    }
+    // const setId = () => {        
+    //     const id = new Date().getTime();
+    //     setEdit({ ...edit, id: id });
+    // }
 
     // useEffect(() => {
     //     console.log(input);
@@ -51,10 +52,15 @@ const EditArea = (props) => {
 
     return (
       <div className="editArea">
-        <DatePicker change={getValueHandler} setId={setId} />
-        <TextField change={onChangeHandler} />
-        <SelectField change={onChangeHandler} />
-        <Button click={updateHandler} todo={edit} text="Edit" />
+        <DatePicker change={getValueHandler} value={edit.dueDate} />
+        <TextField change={onChangeHandler} value={edit.name} />
+        <SelectField change={onChangeHandler} value={edit.priority} />
+        <Button
+          click={updateHandler}
+          todo={edit}
+          text="Edit"
+          editTodoId={props.editTodoId}
+        />
       </div>
     );
 }

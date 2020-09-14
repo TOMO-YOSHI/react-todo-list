@@ -14,9 +14,16 @@ class App extends React.Component {
         priority: 1,
         id: "testkey"
       },
+      {
+        dueDate: new Date(),
+        name: "aaa",
+        priority: 2,
+        id: "afraer"
+      },
     ],
     modalOpen: false,
     editModalOpen: false,
+    editTodoId: ""
   };
 
   addTodo = (todo) => {
@@ -36,21 +43,15 @@ class App extends React.Component {
     if (!todo.name || !todo.dueDate || !todo.priority) {
       alert("Please fill in all fields!!");
     } else {
-      // let todoList = this.state.todoList;
-      // todoList.push(todoInput);
       let newTodoList = this.state.todoList;
       let index = newTodoList.findIndex(
-        todo => todo.id === id);
-      // let index = newTodoList.indexOf(
-      //   todo => console.log("testlog", todo));
+        todo => todo.id == id);
+      
+      console.log("index", index, id);
 
-        console.log("TodoList", this.state.todoList);
+      let newTodo = {...todo, id: id}
 
-        console.log("newTodoList", newTodoList);
-
-        console.log("index", index);
-
-      newTodoList[index] = todo;
+      newTodoList[index] = newTodo;
       this.setState({ todoList: newTodoList });
       this.handleEditClose();
     }
@@ -70,8 +71,13 @@ class App extends React.Component {
     this.setState({ modalOpen: false });
   };
 
-  handleEditOpen = () => {
-    this.setState({ editModalOpen: true });
+  handleEditOpen = (event) => {
+    let todoId = event.target.closest(".storeTodoId").dataset.todoid;
+    console.log(todoId);
+    this.setState({
+      editModalOpen: true,
+      editTodoId: todoId,
+    });
   };
 
   handleEditClose = () => {
@@ -95,6 +101,7 @@ class App extends React.Component {
         <OutputArea
           todoList={this.state.todoList}
           editTodo={this.editTodo}
+          editTodoId={this.state.editTodoId}
           deleteTodo={this.deleteTodo}
           editModalOpen={this.state.editModalOpen}
           handleEditOpen={this.handleEditOpen}

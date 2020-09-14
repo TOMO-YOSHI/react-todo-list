@@ -51,7 +51,7 @@ export default function TransitionsModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Please Enter Your Duty</h2>
+            <h2 id="transition-modal-title">Enter Your Duty</h2>
             <div id="transition-modal-description">
               <InputArea 
                 addTodo={props.addTodo} />
