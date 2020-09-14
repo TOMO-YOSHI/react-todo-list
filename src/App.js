@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Header from './components/Header/Header.component';
+import SearchAppBar from './components/SearchAppBar/SearchAppBar.component';
 import OutputArea from './components/OutputArea/OutputArea.component';
 import TransitionsModal from "./components/Modal/Modal.component.jsx";
 
@@ -91,7 +92,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header
+        <SearchAppBar
         // addTodo={this.addTodo}
         // modalOpen={this.state.modalOpen}
         // handleOpen={this.handleOpen}

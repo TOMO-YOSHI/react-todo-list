@@ -105,7 +105,7 @@ export default function InteractiveList(props) {
                       <ListItemText
                         primary={
                           <p>
-                            {month}/{date}/{year} - {todo.name} - {priority}
+                            {month}/{date}/{year} <br />{todo.name} - {priority}
                           </p>
                         }
                         secondary={secondary ? "Secondary text" : null}

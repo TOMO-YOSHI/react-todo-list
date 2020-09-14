@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
     color: "white",
-    backgroundColor: "skyblue",
-    width: "22ch"
+    backgroundColor: "#3f51b5",
+    width: "22ch",
   },
 }));
 

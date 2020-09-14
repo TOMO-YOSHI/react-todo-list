@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  addIcon: {
+    color: "white"
+  }
 }));
 
 export default function TransitionsModal(props) {
@@ -35,7 +38,7 @@ export default function TransitionsModal(props) {
   return (
     <div className="modalButton">
       <IconButton aria-label="delete" onClick={props.handleOpen}>
-        <AddIcon />
+        <AddIcon className={classes.addIcon} />
       </IconButton>
       <Modal
         aria-labelledby="transition-modal-title"
