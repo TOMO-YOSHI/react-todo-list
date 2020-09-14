@@ -22,7 +22,7 @@ const EditArea = (props) => {
     }, [])
 
     useEffect(()=>{
-      console.log(edit);
+      console.log("edit", edit);
     }, [edit])
 
 

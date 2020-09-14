@@ -38,10 +38,18 @@ class App extends React.Component {
     } else {
       // let todoList = this.state.todoList;
       // todoList.push(todoInput);
-      let newTodoList = [...this.state.todoList];
-      let index = newTodoList.indexOf(
+      let newTodoList = this.state.todoList;
+      let index = newTodoList.findIndex(
         todo => todo.id === id);
+      // let index = newTodoList.indexOf(
+      //   todo => console.log("testlog", todo));
+
+        console.log("TodoList", this.state.todoList);
+
+        console.log("newTodoList", newTodoList);
+
         console.log("index", index);
+
       newTodoList[index] = todo;
       this.setState({ todoList: newTodoList });
       this.handleEditClose();
