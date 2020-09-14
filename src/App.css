@@ -4,12 +4,15 @@
 }
 
 .modalButton {
-    position: absolute;
+    position: fixed;
     /* top: 50%; */
-    bottom: 20px;
+    bottom: 25px;
     right: 20px;
     background-color: skyblue;
     border-radius: 50%;
-    opacity: 80%;
+    opacity: 70%;
     /* transform: translateY(-50%); */
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

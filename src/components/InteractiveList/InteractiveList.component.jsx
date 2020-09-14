@@ -93,7 +93,6 @@ export default function InteractiveList(props) {
                   <List dense={dense} key={todo.id}>
                     <ListItem className={classes.listItem}>
                       <EditModal
-                        // existTodo={todo}
                         todoId={todo.id}
                         todoList={todoList}
                         editModalOpen={props.editModalOpen}

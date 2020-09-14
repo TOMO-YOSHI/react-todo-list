@@ -54,9 +54,9 @@ export default function EditModal(props) {
             <h2 id="transition-modal-title">Please Edit Your Duty</h2>
             <div id="transition-modal-description">
               <EditArea
-                editTodoId={props.editTodoId}
-                todoList={props.existTodo}
+                todoList={props.todoList}
                 editTodo={props.editTodo}
+                editTodoId={props.editTodoId}
               />
             </div>
           </div>

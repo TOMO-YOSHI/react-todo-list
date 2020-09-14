@@ -21,9 +21,16 @@ const EditArea = (props) => {
     //   console.log("editArea", props.todoList);
     // }, [])
 
-    // useEffect(()=>{
-    //   console.log("edit", edit);
-    // }, [edit])
+    useEffect(()=>{
+      let newTodoList = props.todoList;
+      let editIndex = newTodoList.findIndex(
+        (todo) => todo.id == props.editTodoId
+      );
+      setEdit(newTodoList[editIndex]);
+      // console.log(props.editTodoId);
+      // console.log(newTodoList);
+      // console.log(editIndex);
+    }, [])
 
     const updateHandler = (edit) => {
       // let todoId = event.target.closest("div").closest("storeTodoId");

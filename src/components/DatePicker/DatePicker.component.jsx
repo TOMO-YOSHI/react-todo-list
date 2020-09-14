@@ -22,27 +22,32 @@ const useStyles = makeStyles(() =>
 
 export default function MaterialUIPickers(props) {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date()
-  );
+  // console.log(props.value);
+  // let initialValue;
+  //   useEffect(() => {
+  //     if (props.value) {
+  //       initialValue = props.value ? props.value : new Date();
+  //     }
+  //   });
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    // setId();
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event);
+    props.change("dueDate", event);
   };
 
-  // useEffect(()=>{
-  //   if (props.value) {
-  //   setSelectedDate(props.value);
-  //   }
-  // })
-
-  useEffect(() => {
-    //   setId();
+  useEffect(()=>{
     props.change("dueDate", selectedDate);
-  }, [selectedDate]);
+  }, [])
 
-  const classes = useStyles()
+  useEffect(()=>{
+    if (props.value) {
+      setSelectedDate(props.value);
+    }
+  })
+
+  const classes = useStyles();
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -59,6 +64,7 @@ export default function MaterialUIPickers(props) {
         KeyboardButtonProps={{
           "aria-label": "change date",
         }}
+        name="dueDate"
       />
     </MuiPickersUtilsProvider>
   );
