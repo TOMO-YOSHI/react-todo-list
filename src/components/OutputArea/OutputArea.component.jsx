@@ -8,13 +8,18 @@ import './OutputArea.styles.scss';
 const OutputArea = (props) => {
   return (
     <div className="outputArea">
-        {
-            props.todoList.length > 0 ?
-             <InteractiveList todoList={props.todoList} deleteTodo={props.deleteTodo}/>
-             :
-             <NoTodo />
-        }
-       
+      {props.todoList.length > 0 ? (
+        <InteractiveList
+          todoList={props.todoList}
+          editTodo={props.editTodo}
+          deleteTodo={props.deleteTodo}
+          editModalOpen={props.editModalOpen}
+          handleEditOpen={props.handleEditOpen}
+          handleEditClose={props.handleEditClose}
+        />
+      ) : (
+        <NoTodo />
+      )}
     </div>
   );
 };

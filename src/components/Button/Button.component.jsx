@@ -24,10 +24,17 @@ export default function IconLabelButtons(props) {
         className={classes.button}
         startIcon={<SaveIcon />}
         onClick={() => {
-            props.click(props.input)
+            props.click(props.todo);
+            // props.todo.id
+            //   ? 
+            //   // props.click(props.todo, props.todoId)
+            //     console.log(props.todo.id)
+            //   : 
+            //     // console.log(props.todo)
+            //     props.click(props.todo);
         }}
       >
-        Save
+        {props.text}
       </Button>
     </div>
   );

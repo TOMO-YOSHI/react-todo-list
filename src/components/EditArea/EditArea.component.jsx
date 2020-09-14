@@ -5,30 +5,44 @@ import TextField from '../TextField/TextField.component';
 import SelectField from '../SelectField/SelectField.component';
 import Button from '../Button/Button.component';
 
-import './InputArea.styles.scss';
+import './EditArea.styles.scss';
 
-const InputArea = (props) => {
-    const [input, setInput] = 
+const EditArea = (props) => {
+    const [edit, setEdit] = 
     useState({
       dueDate: "",
       name: "",
       priority: "",
-    //   id: "",
+      id: "",
     });
+
+    useEffect(()=>{
+      setEdit(props.existTodo);
+      console.log(props.existTodo);
+    }, [])
+
+    useEffect(()=>{
+      console.log(edit);
+    }, [edit])
+
+
+    const updateHandler = (edit) => {
+      props.editTodo(edit, edit.id);
+    }
 
     const onChangeHandler = (event) => {
         const {value, name} = event.target;
 
-        setInput({...input, [name]: value});
+        setEdit({...edit, [name]: value});
     }
 
     const getValueHandler = (name, value) => {
-        setInput({ ...input, [name]: value });
+        setEdit({ ...edit, [name]: value });
     }
 
     const setId = () => {        
         const id = new Date().getTime();
-        setInput({ ...input, id: id });
+        setEdit({ ...edit, id: id });
     }
 
     // useEffect(() => {
@@ -36,13 +50,13 @@ const InputArea = (props) => {
     // }, [input])
 
     return (
-      <div className="inputArea">
+      <div className="editArea">
         <DatePicker change={getValueHandler} setId={setId} />
         <TextField change={onChangeHandler} />
         <SelectField change={onChangeHandler} />
-        <Button click={props.addTodo} todo={input} text="Save" />
+        <Button click={updateHandler} todo={edit} text="Edit" />
       </div>
     );
 }
 
-export default InputArea;
+export default EditArea;

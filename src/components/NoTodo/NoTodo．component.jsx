@@ -6,7 +6,7 @@ const NoTodo = () => {
     return (
         <div className="noTodoDiv">
             <p>There's no todo yet.</p>
-            <p>Please add what you will do!!</p>
+            <p>Add what you will do!!</p>
         </div>
     )
 }

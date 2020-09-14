@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditModal from "../EditModal/EditModal.component";
 
 import './InteractiveList.styles.scss';
 
@@ -32,6 +33,16 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "500px"
     }
   },
+  listItem: {
+    "-webkit-box-shadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    "-moz-box-shadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    "box-shadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    "border-radius": "5px"
+  }
+//   editButton: {
+//       backgroundColor: "rgba(0, 0, 0, 0.54)",
+//       color: "white"
+//   }
 }));
 
 export default function InteractiveList(props) {
@@ -78,11 +89,25 @@ export default function InteractiveList(props) {
                         break;
                 }
 
+                console.log(todo.id);
+
                 return (
                   <List dense={dense} key={todo.id}>
-                    <ListItem>
+                    <ListItem className={classes.listItem}>
+                      <EditModal
+                        existTodo={todo}
+                        editModalOpen={props.editModalOpen}
+                        editTodo={props.editTodo}
+                        handleEditOpen={props.handleEditOpen}
+                        handleEditClose={props.handleEditClose}
+                      />
+
                       <ListItemText
-                        primary={`${month}/${date}/${year} - ${todo.name} - ${priority}`}
+                        primary={
+                          <p>
+                            {month}/{date}/{year} - {todo.name} - {priority}
+                          </p>
+                        }
                         secondary={secondary ? "Secondary text" : null}
                       />
                       <ListItemSecondaryAction>
@@ -106,11 +131,11 @@ export default function InteractiveList(props) {
 
         // <List dense={dense}>
         //   <ListItem>
-        //     <ListItemAvatar>
-        //       <Avatar>
-        //         <EditIcon />
-        //       </Avatar>
-        //     </ListItemAvatar>
+            // <ListItemAvatar>
+            //   <Avatar>
+            //     <EditIcon />
+            //   </Avatar>
+            // </ListItemAvatar>
         //     <ListItemText
         //       primary="Single-line item"
         //       secondary={secondary ? "Secondary text" : null}

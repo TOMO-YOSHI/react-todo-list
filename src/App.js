@@ -8,13 +8,15 @@ import TransitionsModal from "./components/Modal/Modal.component.jsx";
 class App extends React.Component {
   state = {
     todoList: [
-      // {
-      //   dueDate: "",
-      //   name: "test",
-      //   priority: "",
-      // },
+      {
+        dueDate: new Date(),
+        name: "test",
+        priority: 1,
+        id: "testkey"
+      },
     ],
     modalOpen: false,
+    editModalOpen: false,
   };
 
   addTodo = (todo) => {
@@ -30,6 +32,22 @@ class App extends React.Component {
     }
   };
 
+  editTodo = (todo, id) => {
+    if (!todo.name || !todo.dueDate || !todo.priority) {
+      alert("Please fill in all fields!!");
+    } else {
+      // let todoList = this.state.todoList;
+      // todoList.push(todoInput);
+      let newTodoList = [...this.state.todoList];
+      let index = newTodoList.indexOf(
+        todo => todo.id === id);
+        console.log("index", index);
+      newTodoList[index] = todo;
+      this.setState({ todoList: newTodoList });
+      this.handleEditClose();
+    }
+  }
+
   deleteTodo = (index) => {
     let todoList = this.state.todoList;
     todoList.splice(index, 1);
@@ -37,11 +55,19 @@ class App extends React.Component {
   };
 
   handleOpen = () => {
-    this.setState({modalOpen:true});
+    this.setState({ modalOpen: true });
   };
 
   handleClose = () => {
     this.setState({ modalOpen: false });
+  };
+
+  handleEditOpen = () => {
+    this.setState({ editModalOpen: true });
+  };
+
+  handleEditClose = () => {
+    this.setState({ editModalOpen: false });
   };
 
   componentDidUpdate() {
@@ -53,14 +79,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header
-          // addTodo={this.addTodo}
-          // modalOpen={this.state.modalOpen}
-          // handleOpen={this.handleOpen}
-          // handleClose={this.handleClose}
+        // addTodo={this.addTodo}
+        // modalOpen={this.state.modalOpen}
+        // handleOpen={this.handleOpen}
+        // handleClose={this.handleClose}
         />
         <OutputArea
           todoList={this.state.todoList}
+          editTodo={this.editTodo}
           deleteTodo={this.deleteTodo}
+          editModalOpen={this.state.editModalOpen}
+          handleEditOpen={this.handleEditOpen}
+          handleEditClose={this.handleEditClose}
         />
         <TransitionsModal
           addTodo={this.addTodo}
