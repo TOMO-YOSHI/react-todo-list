@@ -118,9 +118,8 @@ export default function InteractiveList(props) {
                           <p>
                             {month}/{date}/{year}
                             <span className="namePri">
-                              <span className="prioritySpan">{priority}</span>
-                              <span className="nameSpan">
-                                &nbsp;&nbsp;&nbsp;
+                            <span className="prioritySpan">{priority}</span>
+                            <span className="nameSpan">
                                 {todo.name}
                               </span>
                             </span>

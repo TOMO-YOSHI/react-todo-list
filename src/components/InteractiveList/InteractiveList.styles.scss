@@ -1,18 +1,20 @@
-.outputArea ul span {
-    margin: 0 !important;
-}
+// .outputArea ul span {
+//     margin: 0 !important;
+// }
 
 .MuiListItemText-root {
     margin-left: 1rem;
 }
 
 .namePri {
+    margin-top: 2px;
     display: flex;
     // justify-content: space-between;
     align-items: center;
 }
 
 .nameSpan {
+    margin: 0 1rem;
     display: inline-block;
 }
 
