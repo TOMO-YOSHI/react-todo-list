@@ -33,7 +33,11 @@ export default function EditModal(props) {
 
   const index = props.todoList.findIndex((todo) => todo.id == props.todoId);
 
-  const open = props.todoList[index].editModalOpen;;
+  const open = 
+  props.todoList[index].editModalOpen ? 
+  props.todoList[index].editModalOpen :
+  false
+  ;
 
   return (
     <div className="storeTodoId" data-todoid={props.todoId}>

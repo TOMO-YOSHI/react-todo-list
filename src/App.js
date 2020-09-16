@@ -9,33 +9,39 @@ import TransitionsModal from "./components/Modal/Modal.component.jsx";
 class App extends React.Component {
   state = {
     todoList: [
-      {
-        dueDate: new Date(),
-        name: "Sample data 1",
-        priority: 1,
-        id: "testkey",
-        editModalOpen: false,
-      },
-      {
-        dueDate: new Date(),
-        name: "Sample data 2",
-        priority: 2,
-        id: "afraer",
-        editModalOpen: false,
-      },
+      // {
+      //   dueDate: new Date(),
+      //   name: "Sample data 1",
+      //   priority: 1,
+      //   id: "testkey",
+      //   editModalOpen: false,
+      // },
+      // {
+      //   dueDate: new Date(),
+      //   name: "Sample data 2",
+      //   priority: 2,
+      //   id: "afraer",
+      //   editModalOpen: false,
+      // },
     ],
     modalOpen: false,
     editTodoId: "",
   };
 
   addTodo = (todo) => {
-    let todoInput = { ...todo, id: new Date().getTime() };
+    let todoInput = { ...todo,
+       date: todo.dueDate.getDate(),
+       month: todo.dueDate.getMonth(),
+       year: todo.dueDate.getFullYear(),
+       id: new Date().getTime()
+      };
 
     if (!todo.name || !todo.dueDate || !todo.priority) {
       alert("Please fill in all fields!!");
     } else {
       let todoList = this.state.todoList;
       // todoList.push(todoInput);
+
       todoList.unshift(todoInput);
       this.setState({ todoList: todoList });
       this.handleClose();
@@ -49,9 +55,16 @@ class App extends React.Component {
       let newTodoList = this.state.todoList;
       let index = newTodoList.findIndex((todo) => todo.id == id);
 
-      console.log("index", index, id);
+      // console.log("index", index, id);
 
-      let newTodo = { ...todo, id: id, editModalOpen: false };
+      let newTodo = {
+        ...todo,
+        date: todo.dueDate.getDate(),
+        month: todo.dueDate.getMonth(),
+        year: todo.dueDate.getFullYear(),
+        id: id,
+        editModalOpen: false,
+      };
 
       newTodoList[index] = newTodo;
       this.setState({ todoList: newTodoList, editTodoId: "" });
@@ -72,15 +85,6 @@ class App extends React.Component {
     this.setState({ modalOpen: false });
   };
 
-  // handleEditOpen = (event) => {
-  //   let todoId = event.target.closest(".storeTodoId").dataset.todoid;
-  //   console.log(todoId);
-  //   this.setState({
-  //     editModalOpen: true,
-  //     editTodoId: todoId,
-  //   });
-  // };
-
   handleEditOpen = (event) => {
     let todoId = event.target.closest(".storeTodoId").dataset.todoid;
 
@@ -95,10 +99,6 @@ class App extends React.Component {
     });
   };
 
-  // handleEditClose = () => {
-  //   this.setState({ editModalOpen: false });
-  // };
-
   handleEditClose = () => {
     let newTodoList = this.state.todoList;
     let todoId = this.state.editTodoId;
@@ -112,9 +112,54 @@ class App extends React.Component {
     });
   };
 
+  componentDidMount() {
+    let todoList = localStorage.getItem("tomoReactTodoList");
+
+    if (todoList !== "undefined" && todoList !== null) {
+      // this.setState({todoList: JSON.parse(todoList),});
+      todoList = JSON.parse(todoList);
+      this.setState({
+        todoList: todoList.todoList,
+        modalOpen: todoList.modalOpen,
+        editTodoId: todoList.editTodoId,
+      });
+    } else {
+      this.setState({
+        todoList: [
+          {
+            dueDate: new Date(),
+            date: parseInt(new Date().getDate()),
+            month: parseInt(new Date().getMonth()),
+            year: parseInt(new Date().getFullYear()),
+            name: "Welcome to ToDo Manager :)",
+            priority: 1,
+            id: "testkey",
+            editModalOpen: false,
+          },
+          {
+            dueDate: new Date(),
+            date: parseInt(new Date().getDate()),
+            month: parseInt(new Date().getMonth()),
+            year: parseInt(new Date().getFullYear()),
+            name: "Let's add your first ToDo!!!",
+            priority: 1,
+            id: "afraer",
+            editModalOpen: false,
+          },
+        ],
+      });
+    }
+  }
+
   componentDidUpdate() {
-    console.log("state update");
-    console.log(...this.state.todoList);
+    const usersTodoList = this.state;
+    localStorage.setItem("tomoReactTodoList", JSON.stringify(usersTodoList));
+
+    // const usersTodoList = this.state.todoList;
+    // localStorage.setItem("tomoReactTodoList", JSON.stringify(usersTodoList));
+
+    // console.log("state update");
+    console.log(this.state);
   }
 
   render() {

@@ -58,16 +58,27 @@ export default function InteractiveList(props) {
           todoList.length ?
             todoList.map((todo, index) => {
                 const date =
-                  todo.dueDate.getDate() < 10
-                    ? "0" + todo.dueDate.getDate()
-                    : todo.dueDate.getDate()
+                  todo.date < 10
+                    ? "0" + todo.date
+                    : todo.date
                 ;
                 const month =
-                  todo.dueDate.getMonth() + 1 < 10
-                    ? "0" + (todo.dueDate.getMonth() + 1)
-                    : todo.dueDate.getMonth() + 1
+                  todo.month + 1 < 10
+                    ? "0" + (todo.month + 1)
+                    : todo.month + 1
                 ;
-                const year = todo.dueDate.getFullYear();
+                const year = todo.year;
+                // const date =
+                //   todo.dueDate.getDate() < 10
+                //     ? "0" + todo.dueDate.getDate()
+                //     : todo.dueDate.getDate()
+                // ;
+                // const month =
+                //   todo.dueDate.getMonth() + 1 < 10
+                //     ? "0" + (todo.dueDate.getMonth() + 1)
+                //     : todo.dueDate.getMonth() + 1
+                // ;
+                // const year = todo.dueDate.getFullYear();
 
                 let priority;
                 switch(todo.priority) {
