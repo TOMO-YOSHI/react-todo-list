@@ -30,7 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EditModal(props) {
   const classes = useStyles();
-  const open = props.editModalOpen;
+
+  const index = props.todoList.findIndex((todo) => todo.id == props.todoId);
+
+  const open = props.todoList[index].editModalOpen;;
 
   return (
     <div className="storeTodoId" data-todoid={props.todoId}>

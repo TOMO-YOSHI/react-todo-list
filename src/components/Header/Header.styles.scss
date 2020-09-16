@@ -1,6 +1,14 @@
 .header {
-    background-color: skyblue;
+    background-color: rgb(63, 81, 181);
     padding: 1rem 0;
+    // height: 56px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     // position: relative;
 
     h1 {

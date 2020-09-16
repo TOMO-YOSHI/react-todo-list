@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Header from './components/Header/Header.component';
+import Header from './components/Header/Header.component.jsx'
 import SearchAppBar from './components/SearchAppBar/SearchAppBar.component';
 import OutputArea from './components/OutputArea/OutputArea.component';
 import TransitionsModal from "./components/Modal/Modal.component.jsx";
@@ -14,16 +14,17 @@ class App extends React.Component {
         name: "Sample data 1",
         priority: 1,
         id: "testkey",
+        editModalOpen: false,
       },
       {
         dueDate: new Date(),
         name: "Sample data 2",
         priority: 2,
         id: "afraer",
+        editModalOpen: false,
       },
     ],
     modalOpen: false,
-    editModalOpen: false,
     editTodoId: "",
   };
 
@@ -34,7 +35,8 @@ class App extends React.Component {
       alert("Please fill in all fields!!");
     } else {
       let todoList = this.state.todoList;
-      todoList.push(todoInput);
+      // todoList.push(todoInput);
+      todoList.unshift(todoInput);
       this.setState({ todoList: todoList });
       this.handleClose();
     }
@@ -49,11 +51,10 @@ class App extends React.Component {
 
       console.log("index", index, id);
 
-      let newTodo = { ...todo, id: id };
+      let newTodo = { ...todo, id: id, editModalOpen: false };
 
       newTodoList[index] = newTodo;
-      this.setState({ todoList: newTodoList });
-      this.handleEditClose();
+      this.setState({ todoList: newTodoList, editTodoId: "" });
     }
   };
 
@@ -71,17 +72,44 @@ class App extends React.Component {
     this.setState({ modalOpen: false });
   };
 
+  // handleEditOpen = (event) => {
+  //   let todoId = event.target.closest(".storeTodoId").dataset.todoid;
+  //   console.log(todoId);
+  //   this.setState({
+  //     editModalOpen: true,
+  //     editTodoId: todoId,
+  //   });
+  // };
+
   handleEditOpen = (event) => {
     let todoId = event.target.closest(".storeTodoId").dataset.todoid;
-    console.log(todoId);
+
+    let newTodoList = this.state.todoList;
+    let index = newTodoList.findIndex((todo) => todo.id == todoId);
+
+    newTodoList[index].editModalOpen = true;
+
     this.setState({
-      editModalOpen: true,
+      todoList: newTodoList,
       editTodoId: todoId,
     });
   };
 
+  // handleEditClose = () => {
+  //   this.setState({ editModalOpen: false });
+  // };
+
   handleEditClose = () => {
-    this.setState({ editModalOpen: false });
+    let newTodoList = this.state.todoList;
+    let todoId = this.state.editTodoId;
+    let index = newTodoList.findIndex((todo) => todo.id == todoId);
+
+    newTodoList[index].editModalOpen = false;
+
+    this.setState({
+      todoList: newTodoList,
+      editTodoId: "",
+    });
   };
 
   componentDidUpdate() {
@@ -92,12 +120,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <SearchAppBar
-        // addTodo={this.addTodo}
-        // modalOpen={this.state.modalOpen}
-        // handleOpen={this.handleOpen}
-        // handleClose={this.handleClose}
-        />
+        <Header />
         <OutputArea
           todoList={this.state.todoList}
           editTodo={this.editTodo}
